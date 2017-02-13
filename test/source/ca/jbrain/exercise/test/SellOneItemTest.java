@@ -4,6 +4,10 @@ package ca.jbrain.exercise.test;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.StringJoiner;
+import java.util.stream.Stream;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -79,15 +83,22 @@ public class SellOneItemTest {
         public void onBarCode(String barCode) {
             if (barCode.isEmpty()){
                 display.setText("Scanning error: empty barcode");
-            }else if ("12345".equals(barCode)) {
-                display.setText("$7.95");
-            }else if ("232324".equals(barCode)){
-                display.setText("$8.15");
             }else {
-                display.setText("Product not found " +
-                        barCode);
+                //introduce lookup table
+                HashMap<String,String> pricesByBarCode = new HashMap<String,String>(){{
+                    put("12345","$7.95");
+                    put("232324","$8.15");
+                }};
+
+                if (pricesByBarCode.containsKey(barCode)) {
+                    display.setText(pricesByBarCode.get(barCode));
+                } else {
+                    display.setText("Product not found " +
+                            barCode);
+                }
             }
         }
+
     }
 
 }
