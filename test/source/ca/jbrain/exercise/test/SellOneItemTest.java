@@ -21,7 +21,7 @@ public class SellOneItemTest {
 
     }
 
-    @Ignore("Refactoring..")
+    @Test
     public void anotherProductFound() throws Exception {
 
         final Display display = new Display();
@@ -31,6 +31,17 @@ public class SellOneItemTest {
 
         assertEquals("$8.15", display.getText());
 
+    }
+
+    @Test
+    public void productNotFound() throws Exception {
+
+        final Display display = new Display();
+        final Sale sale = new Sale(display);
+
+        sale.onBarCode("99999");
+
+        assertEquals("Product not found 99999",display.getText());
     }
 
     public static class Display{
@@ -55,7 +66,14 @@ public class SellOneItemTest {
         }
 
         public void onBarCode(String barCode) {
-            display.setText("$7.95");
+            if ("12345".equals(barCode)) {
+                display.setText("$7.95");
+            }else if ("232324".equals(barCode)){
+                display.setText("$8.15");
+            }else {
+                display.setText("Product not found " +
+                        barCode);
+            }
         }
     }
 
