@@ -6,5 +6,15 @@ Test project:
 Removing duplication --> MVC (Model View Control) structure emerge
 Focusiong on improving naming --> redistribute responsibility
 
+Structures need names, which we need to improve
+Better names lead to bigger abstractions
+Bigger abstractions help us see more, bigger duplication
 
+Structure emerge --> structure need names --> improve names --> abstraction emerge --> higher-level duplication
+--> remove duplication
 
+remvoe duplication --> improve names
+
+Compose method
+Divide your program into methods that perform one identifiable task. Keep all of the operations in a method at the same level of abstraction.
+This will naturally result in programs with many small methods, each a few lines long.
