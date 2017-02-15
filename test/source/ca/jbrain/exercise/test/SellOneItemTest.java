@@ -84,11 +84,15 @@ public class SellOneItemTest {
             }
 
             if (pricesByBarCode.containsKey(barCode)) {
-                displayPrice(pricesByBarCode.get(barCode));
+                displayPrice(findPrice(barCode));
             } else {
                 displayProductNotFoudMessage(barCode);
             }
 
+        }
+
+        private String findPrice(String barCode) {
+            return pricesByBarCode.get(barCode);
         }
 
         private void displayPrice(String text) {
