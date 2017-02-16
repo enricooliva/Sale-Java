@@ -28,7 +28,11 @@ public class Display {
         setText(text);
     }
 
-    public void displayNoSellInProcessMessage(Sale sale) {
+    public void displayNoSellInProcessMessage() {
         text = "No sell in process. Try scanning a product.";
+    }
+
+    void displayTotalPrice(String price) {
+        text = "Total: "+ price;
     }
 }

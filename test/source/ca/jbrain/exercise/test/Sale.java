@@ -7,6 +7,7 @@ public class Sale {
 
     private final Catalog catalog;
     private Display display;
+    private String price;
 
     public Sale(Display display, Catalog catalog) {
         this.display = display;
@@ -19,16 +20,19 @@ public class Sale {
             return;
         }
 
-        final String priceAsText = catalog.findPrice(barCode);
-        if (priceAsText == null) {
+        price = catalog.findPrice(barCode);
+        if (price == null) {
             display.displayProductNotFoudMessage(barCode);
         } else {
-            display.displayPrice(priceAsText, this);
+            display.displayPrice(price, this);
         }
     }
 
     public void onTotal() {
-        display.displayNoSellInProcessMessage(this);
+        if (price == null)
+        display.displayNoSellInProcessMessage();
+        else
+            display.displayTotalPrice(price);
     }
 
 }
