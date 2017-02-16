@@ -24,7 +24,7 @@ public class Display {
         setText("Scanning error: empty barcode");
     }
 
-    public void displayPrice(String text, Sale sale) {
+    public void displayPrice(String text) {
         setText(text);
     }
 

@@ -21,6 +21,9 @@ public class SellOneItemTest {
         sale = new Sale(display, new Catalog(new HashMap<String, String>() {{
             put("12345", "$7.95");
             put("232324", "$8.15");
+        }}, new HashMap<String, Integer>() {{
+            put("12345", 795);
+            put("232324", 815);
         }}));
     }
 

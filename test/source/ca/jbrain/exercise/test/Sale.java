@@ -1,5 +1,9 @@
 package ca.jbrain.exercise.test;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+
 /**
  * Created by enricooliva on 15/02/2017.
  */
@@ -14,6 +18,7 @@ public class Sale {
         this.catalog = catalog;
     }
 
+
     public void onBarCode(String barCode) {
         if (barCode.isEmpty()) {
             display.displayEmptyProductMessage();
@@ -24,8 +29,16 @@ public class Sale {
         if (scannedPrice == null) {
             display.displayProductNotFoudMessage(barCode);
         } else {
-            display.displayPrice(scannedPrice, this);
+            display.displayPrice(formatMonetaryAmount(scannedPrice));
         }
+    }
+
+    private String formatMonetaryAmount(String scannedPrice) {
+        return  scannedPrice;
+    }
+
+    private Integer parsePrinceInCents(String scannedPrice) {
+        return 0;
     }
 
     public void onTotal() {
