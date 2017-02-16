@@ -18,3 +18,6 @@ remvoe duplication --> improve names
 Compose method
 Divide your program into methods that perform one identifiable task. Keep all of the operations in a method at the same level of abstraction.
 This will naturally result in programs with many small methods, each a few lines long.
+
+Notes:
+https://github.com/junit-team/junit4/wiki/Parameterized-tests
