@@ -45,10 +45,14 @@ public class Sale {
     public void onTotal() {
         boolean saleInProgress = !pendingPurchaseItemPrices.isEmpty();
         if (saleInProgress) {
-            display.displayTotalPrice(Display.format(pendingPurchaseItemPrices.iterator().next()));
+            display.displayPurchaseTotal(Display.format(pendingPurchaseTotal()));
         } else {
             display.displayNoSellInProcessMessage();
         }
+    }
+
+    private Integer pendingPurchaseTotal() {
+        return pendingPurchaseItemPrices.iterator().next();
     }
 
 }

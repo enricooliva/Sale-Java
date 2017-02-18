@@ -32,7 +32,7 @@ public class Display {
         text = "No sell in process. Try scanning a product.";
     }
 
-    void displayTotalPrice(String price) {
+    void displayPurchaseTotal(String price) {
         text = "Total: "+ price;
     }
 
