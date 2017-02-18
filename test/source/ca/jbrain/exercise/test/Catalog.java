@@ -7,6 +7,11 @@ public class Catalog {
     private final Map<String, Integer> pricesByBarCodeAsCents;
 
 
+    public Catalog(Map<String, Integer> pricesByBarCodeAsCentes){
+        this.pricesByBarCodeAsText =null;
+        this.pricesByBarCodeAsCents = pricesByBarCodeAsCentes;
+    }
+
     public Catalog(Map<String, String> pricesByBarCodeAsText, Map<String, Integer> pricesByBarCodeAsCents) {
         this.pricesByBarCodeAsText =pricesByBarCodeAsText;
         this.pricesByBarCodeAsCents = pricesByBarCodeAsCents;
