@@ -1,5 +1,6 @@
 package ca.jbrain.exercise.test;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -68,23 +69,23 @@ public class SellMultipleItemTest {
     }
 
 
-    //    @Test
-//    public void severItemFound() throws Exception {
-//        Catalog catalog = new Catalog(new HashMap<String, String>(){{
-//            put("1", "$8.5");
-//            put("2", "$12.75");
-//            put("3", "$3.30");
-//        }});
-//        Display display = new Display();
-//        Sale sale = new Sale(display, catalog);
-//
-//        sale.onBarCode("1");
-//        sale.onBarCode("2");
-//        sale.onBarCode("3");
-//
-//        sale.onTotal();
-//
-//        assertEquals("Total: $24.55", display.getText());
-//
-//    }
+        @Ignore
+    public void severItemFound() throws Exception {
+        Catalog catalog = new Catalog(new HashMap<String, Integer>(){{
+            put("1", 850);
+            put("2", 1275);
+            put("3", 330);
+        }});
+        Display display = new Display();
+        Sale sale = new Sale(display, catalog);
+
+        sale.onBarCode("1");
+        sale.onBarCode("2");
+        sale.onBarCode("3");
+
+        sale.onTotal();
+
+        assertEquals("Total: $24.55", display.getText());
+
+    }
 }
