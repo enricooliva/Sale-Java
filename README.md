@@ -21,3 +21,5 @@ This will naturally result in programs with many small methods, each a few lines
 
 Notes:
 https://github.com/junit-team/junit4/wiki/Parameterized-tests
+
+Evolutionary design
