@@ -50,7 +50,25 @@ public class SellMultipleItemTest {
                 display.getText());
     }
 
-//    @Test
+    @Test
+    public void severalItemNotFound() throws Exception {
+
+        Display display = new Display();
+        Sale sale = new Sale(display, catalogWithoutBarcodes(
+                "product you won't find",
+                "another product you won't find" ));
+
+        sale.onBarCode("product you won't find");
+        sale.onBarCode("another product you won't find");
+
+    }
+
+    private Catalog catalogWithoutBarcodes(String barCode, String barCode1) {
+        return new Catalog(Collections.emptyMap(),Collections.emptyMap());
+    }
+
+
+    //    @Test
 //    public void severItemFound() throws Exception {
 //        Catalog catalog = new Catalog(new HashMap<String, String>(){{
 //            put("1", "$8.5");
