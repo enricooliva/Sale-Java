@@ -41,6 +41,6 @@ public class Display {
     }
 
     public void displayPrice(int priceInCents) {
-        text = format(priceInCents);
+        this.setText(format(priceInCents));
     }
 }

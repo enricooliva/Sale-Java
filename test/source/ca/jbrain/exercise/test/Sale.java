@@ -44,9 +44,9 @@ public class Sale {
 
     public void onTotal() {
         if (pendingPurchaseItemPrices.isEmpty()) {
-            display.displayPurchaseTotal(Display.format(pendingPurchaseTotal()));
-        } else {
             display.displayNoSellInProcessMessage();
+        } else {
+            display.displayPurchaseTotal(Display.format(pendingPurchaseTotal()));
         }
     }
 
