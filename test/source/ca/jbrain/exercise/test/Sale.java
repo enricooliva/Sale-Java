@@ -46,12 +46,13 @@ public class Sale {
         if (pendingPurchaseItemPrices.isEmpty()) {
             display.displayNoSellInProcessMessage();
         } else {
-            display.displayPurchaseTotal(Display.format(pendingPurchaseTotal()));
+            display.displayPurchaseTotal(Display.format(computePurchaseTotal(pendingPurchaseItemPrices)));
         }
     }
 
-    private Integer pendingPurchaseTotal() {
-        return pendingPurchaseItemPrices.iterator().next();
+    public static Integer computePurchaseTotal(Collection<Integer> purchaseItemPrices) {
+            return purchaseItemPrices.stream().reduce(
+                   0, (sum, each) -> sum + each);
     }
 
 }

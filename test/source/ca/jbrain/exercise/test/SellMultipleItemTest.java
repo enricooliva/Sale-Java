@@ -69,7 +69,7 @@ public class SellMultipleItemTest {
     }
 
 
-        @Ignore
+        @Test
     public void severItemFound() throws Exception {
         Catalog catalog = new Catalog(new HashMap<String, Integer>(){{
             put("1", 850);
@@ -87,5 +87,24 @@ public class SellMultipleItemTest {
 
         assertEquals("Total: $24.55", display.getText());
 
+    }
+
+
+    @Test
+    public void severalItemsNotFound() throws Exception {
+        Catalog catalog = new Catalog(new HashMap<String, Integer>(){{
+            put("1", 850);
+            put("2", 1275);
+        }});
+        Display display = new Display();
+        Sale sale = new Sale(display, catalog);
+
+        sale.onBarCode("1");
+        sale.onBarCode("you don't know");
+        sale.onBarCode("2");
+
+        sale.onTotal();
+
+        assertEquals("Total: $21.25", display.getText());
     }
 }
