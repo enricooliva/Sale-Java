@@ -16,7 +16,7 @@ public class Catalog {
         return pricesByBarCodeAsText;
     }
 
-    public String findPrice(String barCode) {
-        return pricesByBarCodeAsText.get(barCode);
+    public Integer findPrice(String barCode) {
+        return pricesByBarCodeAsCents.get(barCode);
     }
 }

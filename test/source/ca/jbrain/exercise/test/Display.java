@@ -24,7 +24,7 @@ public class Display {
         setText("Scanning error: empty barcode");
     }
 
-    public void displayPrice(String text) {
+    public void displayText(String text) {
         setText(text);
     }
 
@@ -34,5 +34,13 @@ public class Display {
 
     void displayTotalPrice(String price) {
         text = "Total: "+ price;
+    }
+
+    public static String format(int priceInCents) {
+        return String.format("$%,.2f", priceInCents / 100.0d);
+    }
+
+    public void displayPrice(int priceInCents) {
+        text = format(priceInCents);
     }
 }

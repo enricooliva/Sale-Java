@@ -2,7 +2,6 @@ package ca.jbrain.exercise.test;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 
 /**
  * Created by enricooliva on 15/02/2017.
@@ -12,6 +11,7 @@ public class Sale {
     private final Catalog catalog;
     private Display display;
     private String scannedPrice;
+    private Collection<Integer> pendingPurchaseItemPrices = new ArrayList<Integer>();
 
     public Sale(Display display, Catalog catalog) {
         this.display = display;
@@ -25,11 +25,12 @@ public class Sale {
             return;
         }
 
-        scannedPrice = catalog.findPrice(barCode);
-        if (scannedPrice == null) {
+        Integer princeInCents = catalog.findPrice(barCode);
+        if (princeInCents == null) {
             display.displayProductNotFoudMessage(barCode);
         } else {
-            display.displayPrice(formatMonetaryAmount(scannedPrice));
+            pendingPurchaseItemPrices.add(princeInCents);
+            display.displayPrice(princeInCents);
         }
     }
 
@@ -42,9 +43,9 @@ public class Sale {
     }
 
     public void onTotal() {
-        boolean saleInProgress = scannedPrice != null;
+        boolean saleInProgress = !pendingPurchaseItemPrices.isEmpty();
         if (saleInProgress) {
-            display.displayTotalPrice(scannedPrice);
+            display.displayTotalPrice(Display.format(pendingPurchaseItemPrices.iterator().next()));
         } else {
             display.displayNoSellInProcessMessage();
         }

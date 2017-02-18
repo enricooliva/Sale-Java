@@ -24,8 +24,8 @@ public class SellMultipleItemTest {
 
     @Test
     public void oneItemFound() throws Exception {
-        Catalog catalog = new Catalog(Collections.singletonMap("12345","$6.5"),
-                Collections.singletonMap("12345",65));
+        Catalog catalog = new Catalog(Collections.singletonMap("12345","$6.50"),
+                Collections.singletonMap("12345", 650));
         Display display = new Display();
         Sale sale = new Sale(display, catalog);
 
@@ -33,12 +33,12 @@ public class SellMultipleItemTest {
 
         sale.onTotal();
 
-        assertEquals("Total: $6.5",display.getText());
+        assertEquals("Total: $6.50",display.getText());
     }
 
     @Test
     public void oneItemNotFound() throws Exception {
-        Catalog catalog = new Catalog(Collections.singletonMap("12345","$6.5"),Collections.singletonMap("12345",65));
+        Catalog catalog = new Catalog(Collections.singletonMap("12345","$6.50"), Collections.singletonMap("12345",650));
         Display display = new Display();
         Sale sale = new Sale(display, catalog);
 
